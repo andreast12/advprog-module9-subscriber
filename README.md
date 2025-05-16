@@ -10,3 +10,9 @@ In the connection string `guest:guest@localhost:5672`:
 - The second `guest` is the password for that user.
 - `localhost` refers to the server address (in this case, the local machine).
 - `5672` is the port number on which the AMQP broker is listening for connections (the default port for AMQP).
+
+## Simulation Slow Subscriber
+
+![Simulation slow subscriber](./screenshot-slow-subscriber.png)
+
+When running the publisher 4 times rapidly, each run sends 5 messages, totaling 20 messages sent to RabbitMQ. Because the subscriber is slow (due to the artificial delay), it cannot process messages as quickly as they arrive. As a result, messages accumulate in the queue. The monitoring screen shows approximately 15 queued messages, reflecting the difference between the rate of publishing and the slower rate of consumption by the subscriber.
